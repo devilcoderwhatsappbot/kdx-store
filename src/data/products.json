@@ -1,0 +1,120 @@
+[
+  {
+    "id": 1,
+    "name": "Chronos Ultra-Thin Watch",
+    "slug": "chronos-ultra-thin-watch",
+    "price": "54,990",
+    "currency": "Rs.",
+    "description": "Swiss-engineered timepiece with sapphire crystal and 24K gold accents",
+    "features": [
+      "Swiss-engineered precision movement",
+      "Sapphire crystal scratch-resistant glass",
+      "24K gold accents and premium finish",
+      "Ultra-thin profile design",
+      "Water-resistant up to 50 meters"
+    ],
+    "image": "https://images.unsplash.com/photo-1523275335682-92da4c34ce4c?w=600&h=600&fit=crop&auto=format&fm=jpg",
+    "category": "Luxury Timepieces",
+    "availability": "In Stock",
+    "sku": "CHRONOS-UT-001"
+  },
+  {
+    "id": 2,
+    "name": "Aurora Pro Headphones",
+    "slug": "aurora-pro-headphones",
+    "price": "32,500",
+    "currency": "Rs.",
+    "description": "Active noise-cancelling with 40mm drivers and 30-hour battery life",
+    "features": [
+      "Active noise-cancelling technology",
+      "Premium 40mm dynamic drivers",
+      "30-hour battery life with fast charging",
+      "Memory foam ear cushions for comfort",
+      "Bluetooth 5.2 with aptX HD support"
+    ],
+    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=600&fit=crop&auto=format&fm=jpg",
+    "category": "Premium Audio",
+    "availability": "In Stock",
+    "sku": "AURORA-PRO-002"
+  },
+  {
+    "id": 3,
+    "name": "SkyEye Pro Drone",
+    "slug": "skyeye-pro-drone",
+    "price": "89,900",
+    "currency": "Rs.",
+    "description": "4K cinematic drone with 3-axis gimbal and 30-minute flight time",
+    "features": [
+      "4K UHD video recording at 60fps",
+      "3-axis mechanical gimbal stabilization",
+      "30-minute maximum flight time",
+      "5km transmission range",
+      "Obstacle avoidance sensors",
+      "Intelligent flight modes"
+    ],
+    "image": "https://images.unsplash.com/photo-1536180931875-f5920d57c498?w=600&h=600&fit=crop&auto=format&fm=jpg",
+    "category": "Professional Drones",
+    "availability": "In Stock",
+    "sku": "SKYEYE-PRO-003"
+  },
+  {
+    "id": 4,
+    "name": "Vanguard Leather Backpack",
+    "slug": "vanguard-leather-backpack",
+    "price": "28,800",
+    "currency": "Rs.",
+    "description": "Full-grain Italian leather with RFID protection and USB charging",
+    "features": [
+      "Premium full-grain Italian leather",
+      "RFID-blocking protection for cards",
+      "Built-in USB charging port",
+      "Water-resistant and durable",
+      "Ergonomic design with padded straps",
+      "Multiple compartments for organization"
+    ],
+    "image": "https://images.unsplash.com/photo-1547981609-4b6bfe67ca72?w=600&h=600&fit=crop&auto=format&fm=jpg",
+    "category": "Executive Accessories",
+    "availability": "In Stock",
+    "sku": "VANGUARD-LB-004"
+  },
+  {
+    "id": 5,
+    "name": "CrystalView 4K Monitor",
+    "slug": "crystalview-4k-monitor",
+    "price": "67,500",
+    "currency": "Rs.",
+    "description": "27-inch IPS display with HDR10 and 144Hz refresh rate",
+    "features": [
+      "27-inch 4K UHD IPS panel",
+      "HDR10 support for enhanced colors",
+      "144Hz refresh rate for smooth visuals",
+      "99% sRGB color accuracy",
+      "Adaptive sync technology",
+      "Multiple connectivity options"
+    ],
+    "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=600&fit=crop&auto=format&fm=jpg",
+    "category": "Professional Displays",
+    "availability": "In Stock",
+    "sku": "CRYSTALVIEW-4K-005"
+  },
+  {
+    "id": 6,
+    "name": "Elite Mechanical Keyboard",
+    "slug": "elite-mechanical-keyboard",
+    "price": "18,900",
+    "currency": "Rs.",
+    "description": "Custom linear switches with RGB lighting and aluminum frame",
+    "features": [
+      "Custom linear mechanical switches",
+      "Per-key RGB lighting customization",
+      "Aircraft-grade aluminum frame",
+      "N-key rollover and anti-ghosting",
+      "Detachable USB-C cable",
+      "Multiple backlight modes"
+    ],
+    "image": "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=600&h=600&fit=crop&auto=format&fm=jpg",
+    "category": "Gaming Peripherals",
+    "availability": "In Stock",
+    "sku": "ELITE-MK-006"
+  }
+]

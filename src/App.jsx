@@ -12,58 +12,7 @@ import {
   Star,
   Sparkles
 } from 'lucide-react'
-
-// Premium product data for the store
-const products = [
-  {
-    id: 1,
-    name: 'Chronos Ultra-Thin Watch',
-    description: 'Swiss-engineered timepiece with sapphire crystal and 24K gold accents',
-    price: 'Rs. 54,990',
-    image: 'https://images.unsplash.com/photo-1523275335682-92da4c34ce4c?w=600&h=600&fit=crop&auto=format&fm=jpg',
-    category: 'Luxury Timepieces'
-  },
-  {
-    id: 2,
-    name: 'Aurora Pro Headphones',
-    description: 'Active noise-cancelling with 40mm drivers and 30-hour battery life',
-    price: 'Rs. 32,500',
-    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=600&fit=crop&auto=format&fm=jpg',
-    category: 'Premium Audio'
-  },
-  {
-    id: 3,
-    name: 'SkyEye Pro Drone',
-    description: '4K cinematic drone with 3-axis gimbal and 30-minute flight time',
-    price: 'Rs. 89,900',
-    image: 'https://images.unsplash.com/photo-1536180931875-f5920d57c498?w=600&h=600&fit=crop&auto=format&fm=jpg',
-    category: 'Professional Drones'
-  },
-  {
-    id: 4,
-    name: 'Vanguard Leather Backpack',
-    description: 'Full-grain Italian leather with RFID protection and USB charging',
-    price: 'Rs. 28,800',
-    image: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca72?w=600&h=600&fit=crop&auto=format&fm=jpg',
-    category: 'Executive Accessories'
-  },
-  {
-    id: 5,
-    name: 'CrystalView 4K Monitor',
-    description: '27-inch IPS display with HDR10 and 144Hz refresh rate',
-    price: 'Rs. 67,500',
-    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=600&fit=crop&auto=format&fm=jpg',
-    category: 'Professional Displays'
-  },
-  {
-    id: 6,
-    name: 'Elite Mechanical Keyboard',
-    description: 'Custom linear switches with RGB lighting and aluminum frame',
-    price: 'Rs. 18,900',
-    image: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=600&h=600&fit=crop&auto=format&fm=jpg',
-    category: 'Gaming Peripherals'
-  }
-]
+import products from './data/products.json'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

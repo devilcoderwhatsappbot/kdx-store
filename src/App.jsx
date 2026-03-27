@@ -10,14 +10,18 @@ import {
   CreditCard,
   MapPin,
   Star,
-  Sparkles
+  Sparkles,
+  Loader
 } from 'lucide-react'
-import products from './data/products.json'
+import { supabase } from './lib/supabase'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [cartCount, setCartCount] = useState(0)
   const [isVisible, setIsVisible] = useState({})
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     // Intersection Observer for fade-in animations
@@ -37,6 +41,33 @@ function App() {
     })
 
     return () => observer.disconnect()
+  }, [])
+
+  // Fetch products from Supabase
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true)
+        const { data, error } = await supabase
+          .from('products')
+          .select('*')
+          .order('id', { ascending: true })
+
+        if (error) {
+          console.error('Error fetching products:', error)
+          setError('Failed to load products. Please try again later.')
+        } else {
+          setProducts(data || [])
+        }
+      } catch (err) {
+        console.error('Unexpected error:', err)
+        setError('An unexpected error occurred.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProducts()
   }, [])
 
   const handleWhatsAppOrder = (product) => {
@@ -169,63 +200,91 @@ function App() {
             <p className="text-gray-400 text-lg">Hand-selected pieces for the discerning individual</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
-              <div 
-                key={product.id}
-                className="group cursor-pointer"
-                style={{
-                  animationDelay: `${index * 0.1}s`,
-                  transform: 'translateZ(0)', // Force GPU acceleration
-                  willChange: 'transform'
-                }}
-              >
-                <div className="relative glass-card overflow-hidden rounded-2xl group-hover:scale-[1.02] transition-all duration-500 ease-out hover:shadow-[0_20px_40px_rgba(238,0,0,0.3)]">
-                  {/* Floating Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-transparent via-kdx-red/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  <div className="relative">
-                    <img 
-                      src={product.image} 
-                      alt={`${product.name} - ${product.description}`}
-                      loading="lazy"
-                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute top-4 left-4 bg-kdx-red/90 text-white px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm">
-                      {product.category}
-                    </div>
-                    <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm p-2 rounded-full">
-                      <Star size={20} className="text-yellow-400" />
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-kdx-red transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                      {product.description}
-                    </p>
+          {/* Loading State */}
+          {loading && (
+            <div className="flex justify-center items-center py-16">
+              <div className="text-center">
+                <Loader size={48} className="mx-auto text-kdx-red animate-spin mb-4" />
+                <p className="text-gray-400">Loading premium collection...</p>
+              </div>
+            </div>
+          )}
+          
+          {/* Error State */}
+          {error && (
+            <div className="flex justify-center items-center py-16">
+              <div className="text-center glass-card p-8">
+                <p className="text-red-400 mb-4">{error}</p>
+                <button 
+                  onClick={() => window.location.reload()}
+                  className="btn-primary"
+                >
+                  Try Again
+                </button>
+              </div>
+            </div>
+          )}
+          
+          {/* Products Grid */}
+          {!loading && !error && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {products.map((product, index) => (
+                <div 
+                  key={product.id}
+                  className="group cursor-pointer"
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                    transform: 'translateZ(0)', // Force GPU acceleration
+                    willChange: 'transform'
+                  }}
+                >
+                  <div className="relative glass-card overflow-hidden rounded-2xl group-hover:scale-[1.02] transition-all duration-500 ease-out hover:shadow-[0_20px_40px_rgba(238,0,0,0.3)]">
+                    {/* Floating Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-transparent via-kdx-red/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-2xl font-bold text-kdx-red">{product.price}</span>
-                      <div className="flex items-center space-x-2 text-kdx-red">
-                        <MessageCircle size={20} />
-                        <span className="text-sm">WhatsApp Order</span>
+                    <div className="relative">
+                      <img 
+                        src={product.image} 
+                        alt={`${product.name} - ${product.description}`}
+                        loading="lazy"
+                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute top-4 left-4 bg-kdx-red/90 text-white px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm">
+                        {product.category}
+                      </div>
+                      <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm p-2 rounded-full">
+                        <Star size={20} className="text-yellow-400" />
                       </div>
                     </div>
                     
-                    <FloatingButton 
-                      onClick={() => handleWhatsAppOrder(product)}
-                      className="w-full"
-                    >
-                      Order Premium Edition
-                    </FloatingButton>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-kdx-red transition-colors">
+                        {product.name}
+                      </h3>
+                      <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                        {product.description}
+                      </p>
+                      
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="text-2xl font-bold text-kdx-red">{product.price}</span>
+                        <div className="flex items-center space-x-2 text-kdx-red">
+                          <MessageCircle size={20} />
+                          <span className="text-sm">WhatsApp Order</span>
+                        </div>
+                      </div>
+                      
+                      <FloatingButton 
+                        onClick={() => handleWhatsAppOrder(product)}
+                        className="w-full"
+                      >
+                        Order Premium Edition
+                      </FloatingButton>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
